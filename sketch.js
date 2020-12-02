@@ -5,10 +5,11 @@ const Body = Matter.Body;
 
 var Paper;
 var Dustbin;
+var paper_image;
 
 function preload()
 {
-	
+  	paper_image = loadImage ("sprites/paper.png");
 }
 
 function setup() {
@@ -17,8 +18,8 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	Dustbin = new dustbin(200, 200, 10, 20);
-	Paper = new paper (300, 100, 50, 50);
+	dustbin = new Dustbin(200, 200, 10, 20);
+	paper = new Paper (300, 100, 50, 50);
 
 	Engine.run(engine);
   
