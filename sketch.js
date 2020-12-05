@@ -3,13 +3,13 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 
-var Paper;
-var Dustbin;
-var paper_image;
+var paper;
+var dustbin;
+
 
 function preload()
 {
-  	paper_image = loadImage ("sprites/paper.png");
+  
 }
 
 function setup() {
@@ -25,6 +25,12 @@ function setup() {
   
 }
 
+
+function keyPresseed() {
+	if (keyCode === UP_ARROW) {
+		Matter.Body.applyForce(paperObject.body,papreObject.body.position,{x:85,y:-85});
+	}
+}
 
 function draw() {
   rectMode(CENTER);
