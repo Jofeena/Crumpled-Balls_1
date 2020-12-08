@@ -15,6 +15,7 @@ class Dustbin
         this.height = height;
     
         World.add(world, this.body);
+        
     }
 
     display(){

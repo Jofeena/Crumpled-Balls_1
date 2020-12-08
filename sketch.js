@@ -9,7 +9,8 @@ var dustbin;
 
 function preload()
 {
-  
+  var Bin = loadImage (dustbin.png/sprites);
+  var paperCrush = loadImage (paper.png/sprites);
 }
 
 function setup() {
