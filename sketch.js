@@ -1,47 +1,57 @@
+
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 
-var paper;
+var paperObject;
 var dustbin;
-
-
-function preload()
-{
-  var Bin = loadImage (dustbin.png/sprites);
-  var paperCrush = loadImage (paper.png/sprites);
-}
+var ground;
 
 function setup() {
-	createCanvas(800, 700);
-
-	engine = Engine.create();
+  createCanvas(1260, 400);
+  engine = Engine.create();
 	world = engine.world;
 
-	dustbin = new Dustbin(200, 200, 10, 20);
-	paper = new Paper (300, 100, 50, 50);
+	ground1 = new Ground(600,height,1320,20);
+	dustbin1 = new Dustbin(910,330,10,120);
+  dustbin2 = new Dustbin(955,385,80,10);
+	dustbin3 = new Dustbin(1000,330,10,120);	
 
-	Engine.run(engine);
-  
+  var paperObject_options ={
+    isStatic:false,
+    restitution : 0.3,
+    density:1.2,
+    friction:0.5  
 }
+this.body = Bodies.circle(200,370,10,paperObject_options);
 
-
-function keyPresseed() {
-	if (keyCode === UP_ARROW) {
-		Matter.Body.applyForce(paperObject.body,papreObject.body.position,{x:85,y:-85});
-	}
+World.add(world,this.body);
 }
 
 function draw() {
   rectMode(CENTER);
-  background(0);
+  background(255,0,0);
+  Engine.update(engine)
+  dustbin1.display();
+  dustbin2.display();
+  dustbin3.display();
+  ground1.display();
 
-  dustbin.display();
-  paper.display();
-
+  
+  
+  ellipse(this.body.position.x,this.body.position.y,15,15); 
+  ellipseMode(RADIUS); 
+  
   drawSprites();
 }
 
+function keyPressed(){
 
+  if (keyCode === UP_ARROW) {
+    
+    Matter.Body.applyForce(this.body,this.body.position,{x:10,y:-10});
+
+  }
+}
 
